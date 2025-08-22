@@ -1,0 +1,1 @@
+export  const COIN_GECKO_UPI_URL = "https://api.coingecko.com/api/v3"; 
