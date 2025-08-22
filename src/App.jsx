@@ -1,12 +1,16 @@
-import './App.css'
+import "./App.css";
+import Banner from "./components/Banner/Banner";
+import CoinTable from "./components/Coin Table/CoinTable";
+import Navbar from "./components/Navbar/Navbar";
 
-function App() {
+function App() { 
+
  
-  return (
-    <>
-    App Component
-    </>
-  )
+  return <>
+   <Navbar/>
+   <Banner/>
+   <CoinTable />
+  </>;
 }
 
-export default App
+export default App;
