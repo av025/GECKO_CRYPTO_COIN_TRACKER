@@ -1,7 +1,14 @@
-function Button({buttonText, onClickHandler}) {
-
-    return <button onClick={onClickHandler}>{buttonText}</button>
-
+function Button({ buttonText, onClickHandler, buttonStyles, buttonDisabled }) {
+    console.log(buttonStyles)
+  return (
+    <button
+      className={buttonStyles}
+      onClick={onClickHandler}
+      disabled={buttonDisabled}
+    >
+      {buttonText}
+    </button>
+  );
 }
 
-export default Button; 
+export default Button;
