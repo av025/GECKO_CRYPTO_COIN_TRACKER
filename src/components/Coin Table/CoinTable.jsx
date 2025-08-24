@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { fetchCoinData } from "../../services/fetchCoinData";
 import { useQuery } from "@tanstack/react-query";
 import Button from "../Button/Button";
 import Loader from "../Loader/Loader";
+import { CurrencyContext } from "../../context/currencyContext";
 
-function CoinTable({currency}) {
-  const [page, setPage] = useState(1);
+function CoinTable() {
+  const [page, setPage] = useState(1); 
+
+const {currency} =  useContext(CurrencyContext);
 
   /**
    * useQuery hook syntax which was provided by react-query
