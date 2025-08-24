@@ -2,8 +2,9 @@ import { useState } from "react";
 import { fetchCoinData } from "../../services/fetchCoinData";
 import { useQuery } from "@tanstack/react-query";
 import Button from "../Button/Button";
+import Loader from "../Loader/Loader";
 
-function CoinTable() {
+function CoinTable({currency}) {
   const [page, setPage] = useState(1);
 
   /**
@@ -14,22 +15,18 @@ function CoinTable() {
    * - options on config object to config some react-query function refetching, caching, retries and background update
    */
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["coins", page],
-    queryFn: () => fetchCoinData(page, "usd"),
+    queryKey: ["coins", page, currency],
+    queryFn: () => fetchCoinData(page, currency),
     // retry: 2,
     // retryDelay: 1000,
     cacheTime: 1000 * 60 * 2,
-    staleTime: 1000 * 60 * 2
-
+    staleTime: 1000 * 60 * 2,
   });
   /**
    * In version 5 we have to write our query as an object
    */
   console.log(data);
 
-  if (isLoading) {
-    return <div>Loading.....</div>;
-  }
 
   // if (isError) {
   //   return <div>Error : {error.message}</div>;
@@ -44,7 +41,7 @@ function CoinTable() {
         <div className="basis-[20%]">Market Cap</div>
       </div>
       <div className="flex flex-col w-[80vw] mx-auto ">
-        {isLoading && <div>Loading......</div>}
+        {isLoading && <Loader/>}
         {data &&
           data.map((coin) => {
             return (
@@ -74,12 +71,12 @@ function CoinTable() {
         <Button
           buttonDisabled={page === 1}
           onClickHandler={() => setPage(page - 1)}
-          buttonStyles={"btn btn-primary btn-wide text-white text-2xl"}
+          buttonStyles={" btn btn-primary"}
           buttonText={"Previous"}
         />
         <Button
           onClickHandler={() => setPage(page + 1)}
-          buttonStyles={"btn btn-secondary btn-wide text-white text-2xl"}
+          buttonStyles={" btn btn-secondary"}
           buttonText={"Next"}
         />
       </div>

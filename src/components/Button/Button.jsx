@@ -1,8 +1,7 @@
 function Button({ buttonText, onClickHandler, buttonStyles, buttonDisabled }) {
-    console.log(buttonStyles)
   return (
     <button
-      className={buttonStyles}
+      className={`${buttonStyles} btn-wide text-white text-2xl`}
       onClick={onClickHandler}
       disabled={buttonDisabled}
     >
