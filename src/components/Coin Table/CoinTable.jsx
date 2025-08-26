@@ -5,10 +5,12 @@ import Button from "../Button/Button";
 import Loader from "../Loader/Loader";
 import currencyStore from "../../state/store";
 import ErrorComponent from "../Error/ErrorComponent";
+import { useNavigate } from "react-router-dom";
 
 
 function CoinTable() {
   const [page, setPage] = useState(1); 
+  const navigate = useNavigate();
 
 const {currency } = currencyStore(); 
 
@@ -22,7 +24,10 @@ const {currency } = currencyStore();
     staleTime: 1000 * 60 * 2,
   });
 
+  function handleReDirectCoin(coindId) {
+    navigate(`/details/${coindId}`);
 
+  }
 
   if (isError) {
     return <ErrorComponent />;
@@ -42,8 +47,9 @@ const {currency } = currencyStore();
           data.map((coin) => {
             return (
               <div
+              onClick={() => handleReDirectCoin(coin.id)}
                 key={coin.id}
-                className="w-full background-transparent text-white flex py-4 px-2 font-semibold items-center justify-between"
+                className="w-full background-transparent text-white flex py-4 px-2 font-semibold items-center justify-between cursor-pointer"
               >
                 <div className="flex items-center justify-start gap-3 basis-[35%]">
                   <div className="w-[5rem] h-[5rem]">
