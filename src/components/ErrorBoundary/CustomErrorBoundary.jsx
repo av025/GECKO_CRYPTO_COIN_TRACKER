@@ -1,0 +1,26 @@
+import { ErrorBoundary } from "react-error-boundary";
+
+function CustomErrorBoundaryUI({ error, resetErrorBoundary }) {
+  return (
+    <div className="h-[100vh] w-[100vw] flex justify-center items-center">
+
+
+    <div role="alert" className="alert alert-error">
+      <p>Something Went Wrong</p>
+      <pre>{error?.message}</pre>
+      <button onClick={resetErrorBoundary}>Try Again</button>
+    </div>
+    </div>
+  );
+}
+
+export default function CustomErrorBoundary({ children }) {
+  return (
+    <ErrorBoundary
+      FallbackComponent={CustomErrorBoundaryUI}
+      onReset={() => window.location.reload()}
+    >
+      {children}
+    </ErrorBoundary>
+  );
+}

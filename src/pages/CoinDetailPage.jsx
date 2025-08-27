@@ -27,7 +27,7 @@ function CoinDetailPage() {
   return (
     <div className="flex flex-col md:flex-row">
       <div className="md:w-1/3 w-full flex flex-col items-center mt-6 md:mt-0 border-r-2 border-gray-500 ">
-        <img src={data?.image?.large} alt={data?.name} className="h-52 mb-5" />
+        <img src={data?.image?.large} alt={data?.name} className="h-52 mb-5" loading="lazy" />
         <h1 className="text-4xl font-bold mb-5">{data?.name}</h1>
         <p className="w-full px-6 py-4 text-justify">{data?.description?.en}</p>
         <div className="w-full flex flex-col md:flex-row md:justify-center md:justify-around">

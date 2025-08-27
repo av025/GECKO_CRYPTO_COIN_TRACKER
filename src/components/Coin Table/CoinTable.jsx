@@ -53,7 +53,7 @@ const {currency } = currencyStore();
               >
                 <div className="flex items-center justify-start gap-3 basis-[35%]">
                   <div className="w-[5rem] h-[5rem]">
-                    <img src={coin.image} alt={coin.name} />
+                    <img src={coin.image} alt={coin.name} loading="lazy" />
                   </div>
                   <div className="flex flex-col">
                     <div className="text-2xl">{coin.name}</div>
