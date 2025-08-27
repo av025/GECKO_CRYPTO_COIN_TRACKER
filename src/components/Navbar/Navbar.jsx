@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import currencyStore from "../../state/store";
 
 
@@ -40,7 +41,7 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">Crypto Tracker</a>
+        <Link  to="/" className="btn btn-ghost text-xl">Crypto Tracker</Link>
       </div>
        <div className="navbar-end">
     <button className="btn btn-ghost btn-circle">
